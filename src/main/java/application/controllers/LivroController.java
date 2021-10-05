@@ -1,33 +1,40 @@
 package application.controllers;
 
-
-
-//import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Controller;
 
-//import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
 
-//import org.springframework.web.bind.annotation.RequestMapping;
+import application.respositories.LivroRepository;
+
+import org.springframework.ui.Model;
 
 
 
 @Controller
 
-//@RequestMapping("/livro")
+@RequestMapping("/livro")
 
-public class LivroController{
+public class LivroController {
 
-   /* @Autowired
+    @Autowired
+
+    private LivroRepository livrosRepo;
 
     @RequestMapping("/list")
 
-    public String list(Model model) {
+    public String list(Model model){
 
-        model.addAttribute("livros");
+        model.addAttribute("livros",livrosRepo.findAll());
 
-        return "list.jsp";
+         return "list.jsp";
 
-    }*/
+
+
+    }
+
+
+
 
 }
