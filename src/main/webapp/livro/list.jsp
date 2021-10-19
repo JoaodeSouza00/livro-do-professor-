@@ -30,7 +30,7 @@
 
                 </tr>
 
-                <c: forEach var="l" items="${livros}">
+                <c:forEach var="l" items="${livros}">
 
                     <tr>
 
@@ -42,7 +42,7 @@
 
 
 
-                </c:>
+                </c:forEach>
 
         </table>
 
