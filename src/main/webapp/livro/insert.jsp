@@ -23,9 +23,9 @@
         <h1>Novo Livro</h1>
 
         <hr>
-        <form action="inset" method="post">
-            <label for="Titulo">Titulo</label>
-            <input type="text" name="Titulo"/>
+        <form action="insert" method="post">
+            <label for="titulo">Titulo</label>
+            <input type="text" name="titulo"/>
             <a href="/livro/list">Voltar</a>
             <input type="submit" value="Salvar">
         </form>
