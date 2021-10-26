@@ -3,10 +3,11 @@ package application.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Controller;
-
+import application.models.Livro;
 import org.springframework.web.bind.annotation.RequestMapping;
-
+import org.springframework.web.bind.annotation.RequestMethod;
 import application.respositories.LivroRepository;
+
 
 import org.springframework.ui.Model;
 
@@ -42,6 +43,12 @@ public class LivroController {
     }
 
 
-
+  @RequestMapping(value="/insert", method=RequestMethod.POST)
+    public String saveInsert(@RequestParam("titulo")String titulo){
+        Livro livro= new Livro();
+        livro.setTitulo(titulo);
+        livrosRepo.save(livro);
+        return "redirect:/livto/list";
+    }
 
 }
