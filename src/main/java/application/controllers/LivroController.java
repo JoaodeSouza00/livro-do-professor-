@@ -1,11 +1,13 @@
 package application.controllers;
-import application.repositories.LivroRepository;
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import application.models.Livro;
+import application.repositories.LivroRepository;
 import org.springframework.ui.Model;
 @Controller
 @RequestMapping("/livro")
@@ -24,13 +26,21 @@ public class LivroController {
   public String formInsert(){
     return "insert.jsp";
   }
-@RequestMapping(value ="/insert",method=RequestMethod.POST)
+@RequestMapping(value="/insert",method=RequestMethod.POST)
   public String saveInsert(@RequestParam("titulo")String titulo){
    
     Livro livro=new Livro();
     livro.setTitulo(titulo);
     livrosRepo.save(livro);
-     
     return "redirect:/livro/list";
   }
+   @RequestMapping("/delete/{id}")
+  public String formDelete(Model model, @PathVariable int id){
+    Optional<Livro>livro=livro=livrosRepo.findById(id);
+    if (livro.isPresent()) {
+      return "redirect:/livro/list";
+      model.addAttribute("livros",livro.get());
+      return "/livro/delete.jsp";
+  }
+}
 }
