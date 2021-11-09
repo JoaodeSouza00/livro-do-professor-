@@ -40,7 +40,7 @@ public class LivroController {
     if (livro.isPresent()) {
       return "redirect:/livro/list";
       model.addAttribute("livros",livro.get());
-      return "/livro/delete.jsp";
+      return "livro/delete.jsp";
+    }
   }
-}
 }
